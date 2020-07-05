@@ -1,2 +1,2 @@
-.SRC.cmake-build-debug
+.SRC/cmake-build-debug
 .SRC/CMakeLists.txt
