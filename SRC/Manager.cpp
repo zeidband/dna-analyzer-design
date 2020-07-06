@@ -8,24 +8,20 @@
 #include "console_writer.h"
 #include "file_writer.h"
 #include "command_line_interface.h"
+#include "parser.h"
 
 void Manager::start() {
     IRead *read = reinterpret_cast<IRead *>(new KeyBoardReader);
     IWrite *write = reinterpret_cast<IWrite *>(new ConsoleWriter);
     ICommand *command;
-    std::string current_command;
+    Parser* current_command;
 
-    while(true) {
+    do {
         write->write("\ncmd >> ");
-        current_command = read->read();
+//        current_command = factory();
+//        current_command = read->read();
 
-//      for checking
-        write->write(current_command);
 
-        //infinite loop
-        char i = 0;
-        if( i++ == 1000 )
-            break;
-    }
+    } while(!command->run(current_command, write));
 
 }

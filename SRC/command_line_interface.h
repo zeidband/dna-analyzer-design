@@ -6,8 +6,12 @@
 #define SRC_COMMAND_LINE_INTERFACE_H
 
 
-class ICommand {
+#include "parser.h"
+#include "i_write.h"
 
+class ICommand {
+public:
+    virtual bool run(Parser* input, IWrite* outputPrint) = 0;
 };
 
 
