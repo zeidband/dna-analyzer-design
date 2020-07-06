@@ -5,7 +5,7 @@
 #include "file_reader.h"
 
 
-std::string FileReader::read(std::string inputFrom) {
+std::string& FileReader::read(std::string& inputFrom) {
     static size_t count = 0;
     count ++;
     std::string line;

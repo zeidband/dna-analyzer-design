@@ -10,7 +10,7 @@
 
 class IRead {
 public:
-    virtual std::string read(std::string inputFrom = "") = 0;
+    virtual std::string& read(std::string& inputFrom = ((std::string&)"")) = 0;
 };
 
 

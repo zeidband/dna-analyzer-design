@@ -6,6 +6,6 @@
 
 bool new_command_class::run(Parser* input, IWrite* outputPrint) {
     // 1. add new seq to the list of the DNA
-
+    outputPrint->write("in new command");
     return false;
 }
