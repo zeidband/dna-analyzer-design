@@ -12,14 +12,18 @@ std::string FileReader::read(std::string inputFrom) {
     std::ifstream myFile(inputFrom.c_str());
 
     if (myFile.is_open()) {
+
         for(size_t i = 0 ; i < count ; ++i) {
+
             if (getline(myFile, line)) {
                 _input = line;
             }
         }
+
         myFile.close();
         return _input;
     }
+
     throw std::fstream::failure("unable to open file");
 }
 
