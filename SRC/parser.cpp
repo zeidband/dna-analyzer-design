@@ -6,13 +6,6 @@
 #include <sstream>
 #include "parser.h"
 
-//Parser::Parser(std::string& command) {
-//    std::stringstream ss(command);
-//    std::string arg;
-//    while(std::getline(ss, arg, ' ')) {
-//        _argsList.push_back(arg);
-//    }
-//}
 
 Parser& Parser::operator=(std::string &command) {
     if(!_argsList.empty()) {

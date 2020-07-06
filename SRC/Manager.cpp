@@ -20,7 +20,7 @@ void Manager::start() {
     bool flag = false;
 
     while(!flag) {
-        write->write("\ncmd >> ");
+        write->write("\n> cmd >> ");
 
         current_command = read->read();
 
@@ -35,5 +35,4 @@ void Manager::start() {
 
         flag = (command->run(&current_command, write));
     }
-
 }
