@@ -11,6 +11,8 @@
 
 class ICommand {
 public:
+    virtual ~ICommand() {}
+
     virtual bool run(Parser* input, IWrite* outputPrint) = 0;
 };
 

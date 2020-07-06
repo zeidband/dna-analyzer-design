@@ -9,19 +9,31 @@
 #include "file_writer.h"
 #include "command_line_interface.h"
 #include "parser.h"
+#include "command_factory.h"
 
 void Manager::start() {
     IRead *read = reinterpret_cast<IRead *>(new KeyBoardReader);
     IWrite *write = reinterpret_cast<IWrite *>(new ConsoleWriter);
     ICommand *command;
-    Parser* current_command;
+    Parser current_command;
+    CommandFactory factory;
+    bool flag = false;
 
-    do {
+    while(!flag) {
         write->write("\ncmd >> ");
-//        current_command = factory();
-//        current_command = read->read();
 
+        current_command = read->read();
 
-    } while(!command->run(current_command, write));
+        try {
+            command = factory.getCommand(&current_command);
+        }
+
+        catch(std::exception &ex) {
+            write->write(ex.what());
+            continue;
+        }
+
+        flag = (command->run(&current_command, write));
+    }
 
 }
