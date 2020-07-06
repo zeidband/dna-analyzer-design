@@ -7,14 +7,20 @@
 
 #include "dna_sequence.h"
 
+
 class DNA {
+public:
+    DNA(std::string &name, std::string dna);
+
 private:
-    Name *_name;
+
+
+    std::string _name;
     size_t _id;
     DnaSequence _dna;
-    Status _status;
+    // _status;
 
-    static size_t _id_counter;
+    static size_t _idCounter;
 };
 
 
