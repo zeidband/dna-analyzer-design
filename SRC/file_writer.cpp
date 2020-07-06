@@ -3,7 +3,16 @@
 //
 
 #include "file_writer.h"
+#include <fstream>
 
-void file_writer::write(std::string) {
+void FileWriter::write(std::string input) {
+    std::ofstream myfile("output.txt", std::ios::ate);
+    if (myfile.is_open()) {
+        myfile << input << std::endl;
+        myfile.close();
 
+    }
+    else {
+        throw std::fstream::failure("unable to open file");
+    }
 }

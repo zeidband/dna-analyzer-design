@@ -4,7 +4,9 @@
 
 #include "Manager.h"
 #include "key_board_reader.h"
+#include "file_reader.h"
 #include "console_writer.h"
+#include "file_writer.h"
 #include "command_line_interface.h"
 
 void Manager::start() {
@@ -15,7 +17,13 @@ void Manager::start() {
 
     while(true) {
         write->write("\ncmd >> ");
-        current_command = read->read();
+        std::cin >> current_command;
+//        try {
+//            current_command = read->read("dna.txt");
+//        }
+//        catch (std::ifstream::failure &exp) {
+//            current_command = exp.what();
+//        }
 //        factory(command).run(write);
 
 //      for checking

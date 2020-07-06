@@ -10,7 +10,7 @@
 
 class KeyBoardReader : public Reader {
 public:
-    virtual std::string read();
+    virtual std::string read(std::string inputFrom);
 };
 
 

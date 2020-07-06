@@ -7,7 +7,7 @@
 
 #include "i_write.h"
 
-class file_writer {
+class FileWriter : public IWrite{
 public:
     void write(std::string);
 };
