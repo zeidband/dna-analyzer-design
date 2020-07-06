@@ -12,6 +12,8 @@ class DNA {
 public:
     DNA(std::string &name, std::string dna);
 
+    size_t getId() { return _id; }
+
 private:
 
 
