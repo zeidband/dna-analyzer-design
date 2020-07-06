@@ -17,25 +17,15 @@ void Manager::start() {
 
     while(true) {
         write->write("\ncmd >> ");
-        std::cin >> current_command;
-//        try {
-//            current_command = read->read("dna.txt");
-//        }
-//        catch (std::ifstream::failure &exp) {
-//            current_command = exp.what();
-//        }
-//        factory(command).run(write);
+        current_command = read->read();
 
 //      for checking
         write->write(current_command);
-
-
-
-
 
         //infinite loop
         char i = 0;
         if( i++ == 1000 )
             break;
     }
+
 }

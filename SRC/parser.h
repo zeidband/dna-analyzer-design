@@ -13,11 +13,11 @@ typedef std::vector<std::string> args;
 
 
 struct Parser {
-public:
-    Parser(std::string command);
 
-private:
-     args _argsList;
+    Parser(std::string& command);
+
+protected:
+    args _argsList;
 };
 
 

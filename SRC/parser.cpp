@@ -6,7 +6,7 @@
 #include <sstream>
 #include "parser.h"
 
-Parser::Parser(std::string command) {
+Parser::Parser(std::string& command) {
     std::stringstream ss(command);
     std::string arg;
     while(std::getline(ss, arg, ' ')) {
