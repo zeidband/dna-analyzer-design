@@ -3,16 +3,52 @@
 //
 
 #include "new_command_class.h"
+#include <iostream>
+#include <cstring>
+#include <sstream>
+#include "list_dna.h"
 
+NewCommandClass::NewCommandClass(Parser *args) {
+    //Correctness check the parser
+    size_t size = args->_argsList.size();
 
-new_command_class::new_command_class(Parser *) {
-    //Correctness check on parser
+    if(size < 2)
+        throw std::invalid_argument("There are not enough arguments to new command");
+
+    if(size > 3)
+        throw std::invalid_argument("There are too much arguments to new command");
+
+    if(!isDna(args->_argsList[1]))
+        throw std::invalid_argument("Invalid DNA");
+
+    if(size == 3)
+        if(args->_argsList[2][0] != '@')
+            throw std::invalid_argument("Should be given @ before the DNA name");
+
+    //the parser is valid!!
+
+    if(size == 2) {
+        static size_t numOfSeq = 1;
+        std::stringstream name;
+        name << "seq" << numOfSeq;
+        args->_argsList.push_back(name.str());
+    }
+
+    else {
+        args->_argsList[2].replace('@', 1, "");
+    }
+}
+
+bool NewCommandClass::isDna(std::string &dna) {
+    return strlen(dna.c_str()) == strspn(dna.c_str(), "ACTG");
 }
 
 
-bool new_command_class::run(Parser* input, IWrite* outputPrint) {
+bool NewCommandClass::run(Parser* input, IWrite* outputPrint) {
     // 1. add new seq to the list of the DNA
-    outputPrint->write("in new command");
+    ListDna list;
+
+    list.printDnaById(outputPrint,list.addDna(input->_argsList[1], input->_argsList[2]));
     return false;
 }
 

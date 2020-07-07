@@ -7,11 +7,14 @@
 
 #include "i_create_commands.h"
 
-class new_command_class : public ICreateCommands {
+class NewCommandClass : public ICreateCommands {
 public:
-    new_command_class(Parser*);
+    NewCommandClass(Parser*);
 
     bool run(Parser* input, IWrite* outputPrint);
+
+protected:
+    bool isDna(std::string &basicString);
 };
 
 

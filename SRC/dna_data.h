@@ -6,11 +6,14 @@
 #define SRC_DNA_DATA_H
 
 #include "dna_sequence.h"
+#include "i_write.h"
 
 
 class DNA {
 public:
     DNA(std::string &name, std::string dna);
+
+    void print(IWrite* output);
 
     size_t getId() { return _id; }
 

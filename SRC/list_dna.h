@@ -8,13 +8,18 @@
 #include "dna_data.h"
 #include <map>
 
+class IWrite;
+
+typedef std::map<size_t, DNA*> IdDnaList;
+typedef std::map<std::string, DNA*> NameDnaList;
+
 class ListDna {
 public:
-    void addDna(std::string dna, std::string name);
-    void printDnaById(size_t id);
+    size_t addDna(std::string dna, std::string name);
+    void printDnaById(IWrite* output, size_t id);
 private:
-    static std::map<size_t, DNA*> _allDnaAsId;
-    static std::map<std::string, DNA*> _allDnaAsName;
+    static IdDnaList _allDnaAsId;
+    static NameDnaList _allDnaAsName;
 };
 
 

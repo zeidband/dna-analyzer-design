@@ -18,7 +18,7 @@ ICommand *CommandFactory::getCommand(Parser *command) {
     }
 
     if(command->_argsList[0] == "new")
-        _command = new new_command_class(command);
+        _command = new NewCommandClass(command);
 
     else
         throw std::invalid_argument("There is no such command");
