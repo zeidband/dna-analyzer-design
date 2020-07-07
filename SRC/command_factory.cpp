@@ -6,16 +6,14 @@
 #include "command_factory.h"
 #include "new_command_class.h"
 
+
 CommandFactory::~CommandFactory() {
-    if(_command) {
-        delete _command;
-    }
+    delete _command;
 }
 
+
 ICommand *CommandFactory::getCommand(Parser *command) {
-    if(!_command) {
-        delete _command;
-    }
+    delete _command;
 
     if(command->_argsList[0] == "new")
         _command = new NewCommandClass(command);

@@ -39,6 +39,7 @@ NewCommandClass::NewCommandClass(Parser *args) {
     }
 }
 
+
 bool NewCommandClass::isDna(std::string &dna) {
     return strlen(dna.c_str()) == strspn(dna.c_str(), "ACTG");
 }

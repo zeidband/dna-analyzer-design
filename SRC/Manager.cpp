@@ -4,9 +4,7 @@
 
 #include "Manager.h"
 #include "key_board_reader.h"
-#include "file_reader.h"
 #include "console_writer.h"
-#include "file_writer.h"
 #include "command_line_interface.h"
 #include "parser.h"
 #include "command_factory.h"

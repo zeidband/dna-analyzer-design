@@ -9,7 +9,7 @@
 
 class NewCommandClass : public ICreateCommands {
 public:
-    NewCommandClass(Parser*);
+    NewCommandClass(Parser* args);
 
     bool run(Parser* input, IWrite* outputPrint);
 
