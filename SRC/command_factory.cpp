@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include "command_factory.h"
 #include "new_command_class.h"
 
@@ -13,10 +14,11 @@ CommandFactory::~CommandFactory() {
 
 
 ICommand *CommandFactory::getCommand(Parser *command) {
-    delete _command;
-
-    if(command->_argsList[0] == "new")
-        _command = new NewCommandClass(command);
+    if(strcmp(command->_argsList[0].c_str(), "new") == 0) {
+        ICommand* temp = new NewCommandClass(command);
+        delete _command;
+        _command = temp;
+    }
 
     else
         throw std::invalid_argument("There is no such command");

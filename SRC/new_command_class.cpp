@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
-#include "list_dna.h"
+#include "container_dna.h"
 
 NewCommandClass::NewCommandClass(Parser *args) {
     //Correctness check the parser
@@ -30,7 +30,7 @@ NewCommandClass::NewCommandClass(Parser *args) {
     if(size == 2) {
         static size_t numOfSeq = 1;
         std::stringstream name;
-        name << "seq" << numOfSeq;
+        name << "seq" << numOfSeq++;
         args->_argsList.push_back(name.str());
     }
 
@@ -46,7 +46,7 @@ bool NewCommandClass::isDna(std::string &dna) {
 
 
 bool NewCommandClass::run(Parser* input, IWrite* outputPrint) {
-    ListDna::printDnaById(outputPrint,ListDna::addDna(input->_argsList[1], input->_argsList[2]));
+    ContainerDna::printDnaById(outputPrint, ContainerDna::addDna(input->_argsList[1], input->_argsList[2]));
     return false;
 }
 

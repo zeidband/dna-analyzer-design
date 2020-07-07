@@ -5,11 +5,8 @@
 #include <sstream>
 #include "dna_data.h"
 
-size_t DNA::_idCounter = 1;
 
-DNA::DNA(std::string &name, std::string dna) : _name(name), _dna(dna) {
-    _id = _idCounter++;
-}
+DNA::DNA(std::string &name, std::string dna, size_t id) : _name(name), _dna(dna) , _id(id) {}
 
 void DNA::print(IWrite *output) {
     std::stringstream out;
