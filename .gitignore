@@ -1,3 +1,4 @@
+.gitignore
 /SRC/cmake-build-debug
 /SRC/CMakeLists.txt
 /SRC/.idea
