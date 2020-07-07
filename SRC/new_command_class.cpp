@@ -35,7 +35,7 @@ NewCommandClass::NewCommandClass(Parser *args) {
     }
 
     else {
-        args->_argsList[2].replace('@', 1, "");
+        args->_argsList[2].erase(0,1);
     }
 }
 
@@ -45,10 +45,7 @@ bool NewCommandClass::isDna(std::string &dna) {
 
 
 bool NewCommandClass::run(Parser* input, IWrite* outputPrint) {
-    // 1. add new seq to the list of the DNA
-    ListDna list;
-
-    list.printDnaById(outputPrint,list.addDna(input->_argsList[1], input->_argsList[2]));
+    ListDna::printDnaById(outputPrint,ListDna::addDna(input->_argsList[1], input->_argsList[2]));
     return false;
 }
 

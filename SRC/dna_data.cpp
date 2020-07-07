@@ -5,7 +5,7 @@
 #include <sstream>
 #include "dna_data.h"
 
-size_t DNA::_idCounter = 0;
+size_t DNA::_idCounter = 1;
 
 DNA::DNA(std::string &name, std::string dna) : _name(name), _dna(dna) {
     _id = _idCounter++;
