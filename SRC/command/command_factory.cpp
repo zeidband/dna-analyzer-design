@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstring>
 #include "command_factory.h"
-#include "new_command_class.h"
+#include "create command/new_command_class.h"
 
 
 CommandFactory::~CommandFactory() {

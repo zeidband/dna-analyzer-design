@@ -2,12 +2,12 @@
 // Created by a on 7/5/20.
 //
 
-#include "Manager.h"
-#include "key_board_reader.h"
-#include "console_writer.h"
-#include "command_line_interface.h"
+#include "manager.h"
+#include "../read/key_board_reader.h"
+#include "../write/console_writer.h"
+#include "../command/command_line_interface.h"
 #include "parser.h"
-#include "command_factory.h"
+#include "../command/command_factory.h"
 
 void Manager::start() {
     IRead *read = reinterpret_cast<IRead *>(new KeyBoardReader);

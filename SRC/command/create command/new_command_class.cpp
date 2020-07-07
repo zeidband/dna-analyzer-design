@@ -6,17 +6,17 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
-#include "container_dna.h"
+#include "../../dna/container_dna.h"
 
 NewCommandClass::NewCommandClass(Parser *args) {
     //Correctness check the parser
     size_t size = args->_argsList.size();
 
     if(size < 2)
-        throw std::invalid_argument("There are not enough arguments to new command");
+        throw std::invalid_argument("There are not enough arguments to create command command");
 
     if(size > 3)
-        throw std::invalid_argument("There are too much arguments to new command");
+        throw std::invalid_argument("There are too much arguments to create command command");
 
     if(!isDna(args->_argsList[1]))
         throw std::invalid_argument("Invalid DNA");

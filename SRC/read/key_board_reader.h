@@ -6,7 +6,7 @@
 #define SRC_KEY_BOARD_READER_H
 
 
-#include "reader.h"
+#include "../read/reader.h"
 
 class KeyBoardReader : public Reader {
 public:

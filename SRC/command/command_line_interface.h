@@ -6,8 +6,8 @@
 #define SRC_COMMAND_LINE_INTERFACE_H
 
 
-#include "parser.h"
-#include "i_write.h"
+#include "../manager/parser.h"
+#include "../write/i_write.h"
 
 class ICommand {
 public:

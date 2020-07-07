@@ -5,9 +5,9 @@
 #ifndef SRC_NEW_COMMAND_CLASS_H
 #define SRC_NEW_COMMAND_CLASS_H
 
-#include "i_create_commands.h"
+#include "../command_line_interface.h"
 
-class NewCommandClass : public ICreateCommands {
+class NewCommandClass : public ICommand {
 public:
     NewCommandClass(Parser* args);
 
