@@ -8,9 +8,11 @@
 #include "../command_line_interface.h"
 #include <map>
 
-typedef std::map<std::string, size_t> sequenceName;
 
 class Load : public ICommand {
+    typedef std::map<std::string, size_t> sequenceName;
+
+
 public:
     Load(Parser& args);
 
@@ -23,7 +25,7 @@ protected:
 
     bool isDna(std::string &dna);
 
-    sequenceName _sequenceFilesAndCount;
+    static sequenceName _sequenceFilesAndCount;
 };
 
 

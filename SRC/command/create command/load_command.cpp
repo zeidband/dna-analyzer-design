@@ -10,6 +10,8 @@
 #include <sstream>
 
 
+Load::sequenceName Load::_sequenceFilesAndCount;
+
 Load::Load(Parser &args) {
     //Correctness check the parser
     isCorrectArgs(args); //throw exception if args not correct
@@ -51,18 +53,22 @@ void Load::isCorrectArgs(Parser &args) {
 
 void Load::addName(Parser &args) {
     if(args._args.size() == 3) {
-        size_t type = args._args[3].find(".");
-        args._args[3].erase(type, args._args.size() - 1);
-        if(!ContainerDna::isNameInContainer(args._args[3])) {
-            _sequenceFilesAndCount[args._args[3]] = 1;
+        size_t type = args._args[2].find(".");
+        args._args[2].erase(type, args._args[2].size() - 1);
+
+        // First time we see a file with that name
+        if(!ContainerDna::isNameInContainer(args._args[2])) {
+            _sequenceFilesAndCount[args._args[2]] = 1;
         }
 
-        std::stringstream name;
-        name << args._args[3] << _sequenceFilesAndCount[args._args[3]];
-        _sequenceFilesAndCount[args._args[3]] += 1;
+        else {
+            std::stringstream name;
+            name << args._args[2] << _sequenceFilesAndCount[args._args[2]];
+            _sequenceFilesAndCount[args._args[2]] += 1;
+            args._args.pop_back();
+            args._args.push_back(name.str());
+        }
 
-        args._args.pop_back();
-        args._args.push_back(name.str());
     }
 
     else {

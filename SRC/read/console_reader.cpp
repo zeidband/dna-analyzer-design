@@ -4,7 +4,7 @@
 
 #include "console_reader.h"
 
-std::string& ConsoleReader::read(std::string& inputFrom) {
+std::string& ConsoleReader::read(std::string& inputFrom, bool readSomeLines /*= false*/) {
     getline(std::cin, _input);
     return _input;
 }
