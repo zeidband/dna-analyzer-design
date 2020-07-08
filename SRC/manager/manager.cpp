@@ -5,7 +5,7 @@
 #include "manager.h"
 #include "../read/console_reader.h"
 #include "../write/console_writer.h"
-#include "../command/command_line_interface.h"
+#include "../command/i_command.h"
 #include "parser.h"
 #include "../command/command_factory.h"
 

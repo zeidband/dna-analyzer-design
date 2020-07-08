@@ -4,6 +4,6 @@
 int main() {
     Manager m;
     m.start();
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "good bye!" << std::endl;
     return 0;
 }

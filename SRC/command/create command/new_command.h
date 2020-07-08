@@ -5,7 +5,7 @@
 #ifndef SRC_NEW_COMMAND_H
 #define SRC_NEW_COMMAND_H
 
-#include "../command_line_interface.h"
+#include "../i_command.h"
 
 class New : public ICommand {
 public:

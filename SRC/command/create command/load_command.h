@@ -5,7 +5,7 @@
 #ifndef SRC_LOAD_COMMAND_H
 #define SRC_LOAD_COMMAND_H
 
-#include "../command_line_interface.h"
+#include "../i_command.h"
 #include <map>
 
 
@@ -17,7 +17,6 @@ public:
     bool run(Parser* input, IWrite* outputPrint);
 
     typedef std::map<std::string, size_t> sequenceName;
-
 
 protected:
     void isCorrectArgs(Parser& args);

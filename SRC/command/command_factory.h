@@ -5,7 +5,7 @@
 #ifndef SRC_COMMAND_FACTORY_H
 #define SRC_COMMAND_FACTORY_H
 
-#include "command_line_interface.h"
+#include "i_command.h"
 
 // need to check if to every command it will do create command + delete?????????????????
 

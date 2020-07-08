@@ -2,8 +2,8 @@
 // Created by a on 7/5/20.
 //
 
-#ifndef SRC_COMMAND_LINE_INTERFACE_H
-#define SRC_COMMAND_LINE_INTERFACE_H
+#ifndef SRC_I_COMMAND_H
+#define SRC_I_COMMAND_H
 
 
 #include "../manager/parser.h"
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif //SRC_COMMAND_LINE_INTERFACE_H
+#endif //SRC_I_COMMAND_H
