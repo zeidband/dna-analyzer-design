@@ -23,6 +23,12 @@ public:
 
     static bool isNameInContainer(std::string name);
 
+    static bool isIDInContainer(size_t id);
+
+    static std::string getDnaByNameOrId(std::string);
+
+    static std::string getNameById(size_t id);
+
 private:
     static IdDnaList _allDnaAsId;
 

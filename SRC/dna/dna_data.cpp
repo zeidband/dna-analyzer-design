@@ -24,3 +24,7 @@ void DNA::print(IWrite *output) {
 
     output->write(out.str());
 }
+
+std::string DNA::getDnaAsString() {
+    return _dna.getDna();
+}

@@ -10,13 +10,14 @@
 
 
 class Load : public ICommand {
-    typedef std::map<std::string, size_t> sequenceName;
-
 
 public:
     Load(Parser& args);
 
     bool run(Parser* input, IWrite* outputPrint);
+
+    typedef std::map<std::string, size_t> sequenceName;
+
 
 protected:
     void isCorrectArgs(Parser& args);

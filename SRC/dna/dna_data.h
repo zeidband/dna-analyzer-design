@@ -15,7 +15,11 @@ public:
 
     void print(IWrite* output);
 
+    std::string getDnaAsString();
+
     size_t getId() { return _id; }
+
+    std::string getName() { return _name; }
 
 private:
     std::string _name;
