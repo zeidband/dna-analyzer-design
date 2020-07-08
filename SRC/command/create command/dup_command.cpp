@@ -30,6 +30,7 @@ void Dup::isCorrectArgs(Parser &args) {
 
     if(args._args[1][0] == '#') {
         args._args[1].erase(0, 1);
+//        check if all numbers
         if(!ContainerDna::isIDInContainer(std::atoi(args._args[1].c_str())))
             throw std::invalid_argument("There is no such DNA");
         args._args[1].insert(args._args[1].begin(), '#');
@@ -47,7 +48,7 @@ void Dup::isCorrectArgs(Parser &args) {
 
 void Dup::addName(Parser &args) {
 
-    if(args._args.size() == 3) {
+    if (args._args.size() == 2) {
 
         // given name to dup
         if (args._args[1][0] == '#') {
@@ -56,19 +57,18 @@ void Dup::addName(Parser &args) {
         }
 
         // First time we see a file with that name
-        if (!ContainerDna::isNameInContainer(args._args[2])) {
-            _sequenceFilesAndCount[args._args[2]] = 1;
-            args._args.push_back(args._args[1]);
+        if (_sequenceFilesAndCount.find(args._args[1].c_str()) == _sequenceFilesAndCount.end()) {
+            _sequenceFilesAndCount[args._args[1]] = 1;
         }
 
-        else {
-            std::stringstream name;
-            name << args._args[2] << "_" << _sequenceFilesAndCount[args._args[2]];
-            _sequenceFilesAndCount[args._args[2]] += 1;
-            args._args.pop_back();
-            args._args.push_back(name.str());
-        }
+        std::stringstream name;
+        name << args._args[1] << "_" << _sequenceFilesAndCount[args._args[1]];
+        _sequenceFilesAndCount[args._args[1]] += 1;
+        args._args.push_back(name.str());
+    }
 
+    else {
+        args._args[2].erase(0,1);
     }
 
     args._args[1] = ContainerDna::getDnaByNameOrId(args._args[1]);

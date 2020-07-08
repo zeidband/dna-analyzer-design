@@ -7,7 +7,7 @@
 
 #include "load_command.h"
 
-class Dup {
+class Dup : public ICommand {
 public:
     Dup(Parser& args);
 

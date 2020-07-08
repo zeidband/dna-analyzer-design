@@ -6,7 +6,7 @@
 #include <cstring>
 #include "command_factory.h"
 #include "create command/new_command.h"
-#include "create command/load_command.h"
+#include "create command/dup_command.h"
 
 
 CommandFactory::~CommandFactory() {
@@ -24,8 +24,14 @@ ICommand *CommandFactory::getCommand(Parser &command) {
         _command = temp;
     }
 
-    if(!strcmp(command._args[0].c_str(), "load")) {
+    else if(!strcmp(command._args[0].c_str(), "load")) {
         ICommand* temp = new Load(command);
+        delete _command;
+        _command = temp;
+    }
+
+    else if(!strcmp(command._args[0].c_str(), "dup")) {
+        ICommand* temp = new Dup(command);
         delete _command;
         _command = temp;
     }
