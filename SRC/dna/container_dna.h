@@ -21,6 +21,8 @@ public:
 
     static void printDnaById(IWrite* output, size_t id);
 
+    static bool isNameInContainer(std::string name);
+
 private:
     static IdDnaList _allDnaAsId;
 

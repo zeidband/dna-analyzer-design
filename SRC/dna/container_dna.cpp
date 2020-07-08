@@ -20,3 +20,7 @@ void ContainerDna::printDnaById(IWrite *output, size_t id) {
     _allDnaAsId[id]->print(output);
 }
 
+bool ContainerDna::isNameInContainer(std::string name) {
+    return _allDnaAsName.find(name.c_str()) != _allDnaAsName.end();
+}
+

@@ -14,7 +14,7 @@ typedef std::vector<std::string> args;
 
 struct Parser {
     Parser& operator=(std::string& command);
-    args _argsList;
+    args _args;
 };
 
 

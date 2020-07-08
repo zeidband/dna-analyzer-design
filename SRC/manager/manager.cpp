@@ -3,14 +3,14 @@
 //
 
 #include "manager.h"
-#include "../read/key_board_reader.h"
+#include "../read/console_reader.h"
 #include "../write/console_writer.h"
 #include "../command/command_line_interface.h"
 #include "parser.h"
 #include "../command/command_factory.h"
 
 void Manager::start() {
-    IRead *read = reinterpret_cast<IRead *>(new KeyBoardReader);
+    IRead *read = reinterpret_cast<IRead *>(new ConsoleReader);
     IWrite *write = reinterpret_cast<IWrite *>(new ConsoleWriter);
     ICommand *command;
     Parser current_command;
@@ -23,7 +23,7 @@ void Manager::start() {
         current_command = read->read();
 
         try {
-            command = factory.getCommand(&current_command);
+            command = factory.getCommand(current_command);
         }
 
         catch(std::exception &ex) {

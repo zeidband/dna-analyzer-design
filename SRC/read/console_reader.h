@@ -2,16 +2,16 @@
 // Created by a on 7/5/20.
 //
 
-#ifndef SRC_KEY_BOARD_READER_H
-#define SRC_KEY_BOARD_READER_H
+#ifndef SRC_CONSOLE_READER_H
+#define SRC_CONSOLE_READER_H
 
 
 #include "../read/reader.h"
 
-class KeyBoardReader : public Reader {
+class ConsoleReader : public Reader {
 public:
     virtual std::string& read(std::string& inputFrom);
 };
 
 
-#endif //SRC_KEY_BOARD_READER_H
+#endif //SRC_CONSOLE_READER_H

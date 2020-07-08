@@ -5,7 +5,8 @@
 #include <iostream>
 #include <cstring>
 #include "command_factory.h"
-#include "create command/new_command_class.h"
+#include "create command/new_command.h"
+#include "create command/load_command.h"
 
 
 CommandFactory::~CommandFactory() {
@@ -13,9 +14,18 @@ CommandFactory::~CommandFactory() {
 }
 
 
-ICommand *CommandFactory::getCommand(Parser *command) {
-    if(strcmp(command->_argsList[0].c_str(), "new") == 0) {
-        ICommand* temp = new NewCommandClass(command);
+ICommand *CommandFactory::getCommand(Parser &command) {
+    //check to under conditions
+    //keep in list
+
+    if(!strcmp(command._args[0].c_str(), "new")) {
+        ICommand* temp = new New(command);
+        delete _command;
+        _command = temp;
+    }
+
+    if(!strcmp(command._args[0].c_str(), "load")) {
+        ICommand* temp = new Load(command);
         delete _command;
         _command = temp;
     }

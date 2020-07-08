@@ -15,7 +15,7 @@ public:
 
     ~CommandFactory();
 
-    ICommand* getCommand(Parser*);
+    ICommand* getCommand(Parser&);
 
 private:
     ICommand *_command;

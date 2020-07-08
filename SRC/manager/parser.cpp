@@ -8,14 +8,14 @@
 
 
 Parser& Parser::operator=(std::string &command) {
-    if(!_argsList.empty()) {
-        _argsList.clear();
+    if(!_args.empty()) {
+        _args.clear();
     }
 
-    std::stringstream ss(command);
+    std::stringstream lineInput(command);
     std::string arg;
-    while(std::getline(ss, arg, ' ')) {
-        _argsList.push_back(arg);
+    while(std::getline(lineInput, arg, ' ')) {
+        _args.push_back(arg);
     }
     return *this;
 }
