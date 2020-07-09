@@ -36,4 +36,6 @@ void Manager::start() {
     }
 
     ContainerDna::deleteAll();
+    delete read;
+    delete write;
 }

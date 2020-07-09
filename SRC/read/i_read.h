@@ -10,6 +10,8 @@
 
 class IRead {
 public:
+    virtual ~IRead() {}
+
     virtual std::string& read(std::string& inputFrom = ((std::string&)""), bool readSomeLines = false) = 0;
 };
 

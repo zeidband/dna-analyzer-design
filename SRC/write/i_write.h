@@ -10,6 +10,8 @@
 
 class IWrite {
 public:
+    virtual ~IWrite() {}
+
     virtual void write(std::string) = 0;
 };
 

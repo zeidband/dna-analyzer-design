@@ -43,10 +43,12 @@ std::string ContainerDna::getNameById(size_t id) {
 }
 
 void ContainerDna::deleteAll() {
-    std::map<size_t, std::tr1::shared_ptr<DNA> >::iterator iter;
+    std::map<size_t, std::tr1::shared_ptr<DNA> >::iterator iter, curr;
 
-    for (iter = _allDnaAsId.begin(); iter != _allDnaAsId.end(); ++iter) {
-        _allDnaAsId.erase(iter);
+    for (iter = _allDnaAsId.begin(); iter != _allDnaAsId.end();) {
+        curr = iter;
+        ++iter;
+        _allDnaAsId.erase(curr);
     }
 }
 
