@@ -7,14 +7,15 @@
 
 #include "dna_data.h"
 #include <map>
+#include <tr1/memory>
 
 class IWrite;
 
 
 class ContainerDna {
 
-    typedef std::map<size_t, DNA*> IdDnaList;
-    typedef std::map<std::string, DNA*> NameDnaList;
+    typedef std::map<size_t, std::tr1::shared_ptr<DNA> > IdDnaList;
+    typedef std::map<std::string, std::tr1::shared_ptr<DNA> > NameDnaList;
 
 public:
     static size_t addDna(std::string dna, std::string name);
@@ -28,6 +29,8 @@ public:
     static std::string getDnaByNameOrId(std::string);
 
     static std::string getNameById(size_t id);
+
+    static void deleteAll();
 
 private:
     static IdDnaList _allDnaAsId;

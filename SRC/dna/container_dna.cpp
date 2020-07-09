@@ -10,9 +10,9 @@ ContainerDna::IdDnaList ContainerDna::_allDnaAsId;
 ContainerDna::NameDnaList ContainerDna::_allDnaAsName;
 
 size_t ContainerDna::addDna(std::string dna, std::string name) {
-    DNA *newDna = new DNA(name, dna, _idCounter);
-    _allDnaAsId.insert(std::pair<size_t, DNA*>(_idCounter, newDna));
-    _allDnaAsName.insert(std::pair<std::string, DNA*>(name, newDna));
+    std::tr1::shared_ptr<DNA> newDna = static_cast<const std::tr1::shared_ptr<DNA> >(new DNA(name, dna, _idCounter));
+    _allDnaAsId.insert(std::pair<size_t, std::tr1::shared_ptr<DNA> >(_idCounter, newDna));
+    _allDnaAsName.insert(std::pair<std::string, std::tr1::shared_ptr<DNA> >(name, newDna));
 
     return _idCounter++;
 }
@@ -40,6 +40,14 @@ std::string ContainerDna::getDnaByNameOrId(std::string NameOrId) {
 
 std::string ContainerDna::getNameById(size_t id) {
     return _allDnaAsId[id]->getName();
+}
+
+void ContainerDna::deleteAll() {
+    std::map<size_t, std::tr1::shared_ptr<DNA> >::iterator iter;
+
+    for (iter = _allDnaAsId.begin(); iter != _allDnaAsId.end(); ++iter) {
+        _allDnaAsId.erase(iter);
+    }
 }
 
 

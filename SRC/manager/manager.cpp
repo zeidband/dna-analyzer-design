@@ -8,6 +8,7 @@
 #include "../command/i_command.h"
 #include "parser.h"
 #include "../command/command_factory.h"
+#include "../dna/container_dna.h"
 
 void Manager::start() {
     IRead *read = reinterpret_cast<IRead *>(new ConsoleReader);
@@ -33,4 +34,6 @@ void Manager::start() {
 
         flag = (command->run(&current_command, write));
     }
+
+    ContainerDna::deleteAll();
 }
