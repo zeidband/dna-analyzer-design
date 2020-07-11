@@ -35,6 +35,7 @@ std::string ContainerDna::getDnaByNameOrId(std::string NameOrId) {
         return _allDnaAsId[std::atoi(NameOrId.c_str())]->getDnaAsString();
     }
 
+    NameOrId.erase(0, 1);
     return _allDnaAsName[NameOrId]->getDnaAsString();
 }
 

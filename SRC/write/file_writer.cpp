@@ -6,7 +6,7 @@
 #include <fstream>
 
 void FileWriter::write(std::string input) {
-    std::ofstream myfile("output.txt", std::ios::ate);
+    std::ofstream myfile(_fileName.c_str(), std::ios::ate);
 
     if (myfile.is_open()) {
         myfile << input << std::endl;

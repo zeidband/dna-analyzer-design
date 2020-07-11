@@ -9,7 +9,12 @@
 
 class FileWriter : public IWrite{
 public:
+    explicit FileWriter(const std::string& name = "output.txt") : _fileName(name) {}
+
     void write(std::string);
+
+private:
+    const std::string _fileName;
 };
 
 
