@@ -14,6 +14,14 @@ public:
     virtual ~ICommand() {}
 
     virtual bool run(Parser* input, IWrite* outputPrint) = 0;
+
+protected:
+
+    bool isDna(std::string &dna);
+
+    bool isId(std::string &id);
+
+    bool isName(std::string &name);
 };
 
 

@@ -23,8 +23,6 @@ protected:
 
     void addName(Parser& args);
 
-    bool isDna(std::string &dna);
-
     static sequenceName _sequenceFilesAndCount;
 };
 

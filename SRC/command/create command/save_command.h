@@ -17,12 +17,6 @@ protected:
     void isCorrectArgs(Parser& args);
 
     void addName(Parser& args);
-
-    bool isDna(std::string &dna);
-
-    bool isId(std::string &basicString);
-
-    bool isName(std::string &basicString);
 };
 
 
