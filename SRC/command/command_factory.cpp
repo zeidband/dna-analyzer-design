@@ -12,7 +12,14 @@
 
 
 CommandFactory::~CommandFactory() {
-    delete _command;
+    std::map<std::string, ICommand*>::iterator iter, curr;
+
+    for (iter = _commands.begin(); iter != _commands.end();) {
+        curr = iter;
+        ++iter;
+        delete curr->second;
+        _commands.erase(curr);
+    }
 }
 
 
@@ -21,38 +28,43 @@ ICommand *CommandFactory::getCommand(Parser &command) {
     //keep in list
 
     if(!strcmp(command._args[0].c_str(), "new")) {
-        ICommand* temp = new New(command);
-        delete _command;
-        _command = temp;
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new New));
+        }
     }
 
     else if(!strcmp(command._args[0].c_str(), "load")) {
-        ICommand* temp = new Load(command);
-        delete _command;
-        _command = temp;
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Load));
+        }
     }
 
     else if(!strcmp(command._args[0].c_str(), "dup")) {
-        ICommand* temp = new Dup(command);
-        delete _command;
-        _command = temp;
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Dup));
+        }
     }
 
     else if(!strcmp(command._args[0].c_str(), "save")) {
-        ICommand* temp = new Save(command);
-        delete _command;
-        _command = temp;
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Save));
+        }
     }
 
     else if(!strcmp(command._args[0].c_str(), "quit")) {
-        ICommand* temp = new Quit;
-        delete _command;
-        _command = temp;
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Quit));
+        }
     }
 
     else
         throw std::invalid_argument("There is no such command");
 
-    return _command;
+    _commands[command._args[0]]->isOk(command);
+    return _commands[command._args[0]];
+}
+
+bool CommandFactory::isCommandExist(std::string &command) {
+    return _commands.find(command.c_str()) != _commands.end();
 }
 

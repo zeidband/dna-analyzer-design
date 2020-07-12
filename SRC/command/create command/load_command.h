@@ -12,9 +12,9 @@
 class Load : public ICommand {
 
 public:
-    Load(Parser& args);
-
     bool run(Parser* input, IWrite* outputPrint);
+
+    void isOk(Parser& args);
 
     typedef std::map<std::string, size_t> sequenceName;
 

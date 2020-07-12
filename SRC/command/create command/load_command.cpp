@@ -12,7 +12,7 @@
 
 Load::sequenceName Load::_sequenceFilesAndCount;
 
-Load::Load(Parser &args) {
+void Load::isOk(Parser &args) {
     //Correctness check the parser
     isCorrectArgs(args); //throw exception if args not correct
 

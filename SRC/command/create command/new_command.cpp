@@ -9,7 +9,7 @@
 #include "../../dna/container_dna.h"
 
 
-New::New(Parser &args) {
+void New::isOk(Parser &args) {
     //Correctness check the parser
     isCorrectArgs(args); //throw exception if args not correct
 

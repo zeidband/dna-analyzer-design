@@ -7,7 +7,8 @@
 #include "save_command.h"
 #include "../../write/file_writer.h"
 
-Save::Save(Parser &args) {
+
+void Save::isOk(Parser &args) {
     //Correctness check the parser
     isCorrectArgs(args); //throw exception if args not correct
 
@@ -18,6 +19,7 @@ Save::Save(Parser &args) {
 bool Save::run(Parser *input, IWrite *outputPrint) {
     FileWriter writer(input->_args[2]);
     writer.write(ContainerDna::getDnaByNameOrId(input->_args[1]));
+    outputPrint->write("done!");
     return false;
 }
 

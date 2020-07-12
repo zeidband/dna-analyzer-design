@@ -9,7 +9,7 @@
 
 class Dup : public ICommand {
 public:
-    Dup(Parser& args);
+    void isOk(Parser& args);
 
     bool run(Parser* input, IWrite* outputPrint);
 

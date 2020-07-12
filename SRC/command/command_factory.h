@@ -6,19 +6,19 @@
 #define SRC_COMMAND_FACTORY_H
 
 #include "i_command.h"
-
+#include <map>
 // need to check if to every command it will do create command + delete?????????????????
 
 class CommandFactory {
 public:
-    CommandFactory() : _command(NULL) {}
-
     ~CommandFactory();
 
     ICommand* getCommand(Parser&);
 
 private:
-    ICommand *_command;
+    std::map<std::string, ICommand*> _commands;
+
+    bool isCommandExist(std::string &command);
 };
 
 

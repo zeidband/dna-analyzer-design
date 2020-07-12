@@ -13,6 +13,8 @@ class ICommand {
 public:
     virtual ~ICommand() {}
 
+    virtual void isOk(Parser& args) = 0;
+
     virtual bool run(Parser* input, IWrite* outputPrint) = 0;
 
 protected:

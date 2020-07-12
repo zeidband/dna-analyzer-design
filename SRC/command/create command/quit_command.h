@@ -9,6 +9,8 @@
 
 class Quit : public ICommand {
 public:
+    void isOk(Parser& args) {}
+
     bool run(Parser* input, IWrite* outputPrint) { return true; }
 };
 

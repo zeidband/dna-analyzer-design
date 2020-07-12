@@ -9,9 +9,7 @@
 
 class New : public ICommand {
 public:
-    New() {}
-
-    New(Parser& args);
+    void isOk(Parser& args);
 
     bool run(Parser* input, IWrite* outputPrint);
 

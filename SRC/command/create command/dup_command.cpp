@@ -10,7 +10,8 @@
 
 Load::sequenceName Dup::_sequenceFilesAndCount;
 
-Dup::Dup(Parser &args) {
+
+void Dup::isOk(Parser &args) {
     //Correctness check the parser
     isCorrectArgs(args); //throw exception if args not correct
 
@@ -85,6 +86,7 @@ void Dup::addName(Parser &args) {
 
     else {
         args._args[1] = ContainerDna::getDnaByNameOrId(args._args[1]);
+        args._args[2].erase(0, 1);
     }
 }
 

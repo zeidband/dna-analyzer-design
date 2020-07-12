@@ -9,7 +9,7 @@
 
 class Save : public ICommand {
 public:
-    Save(Parser& args);
+    void isOk(Parser& args);
 
     bool run(Parser* input, IWrite* outputPrint);
 
