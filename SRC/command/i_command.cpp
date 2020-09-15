@@ -35,6 +35,3 @@ bool ICommand::isName(std::string &name) {
 
     return flag;
 }
-
-
-

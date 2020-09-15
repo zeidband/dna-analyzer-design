@@ -6,7 +6,7 @@
 #define SRC_DNA_SEQUENCE_H
 
 #include <list>
-#include "../read/i_read.h"
+#include "../reader/i_read.h"
 
 class DnaSequence {
 private:

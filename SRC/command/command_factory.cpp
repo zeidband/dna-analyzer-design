@@ -5,10 +5,10 @@
 #include <iostream>
 #include <cstring>
 #include "command_factory.h"
-#include "create command/new_command.h"
-#include "create command/dup_command.h"
-#include "create command/quit_command.h"
-#include "create command/save_command.h"
+#include "create_command/new_command.h"
+#include "create_command/dup_command.h"
+#include "create_command/quit_command.h"
+#include "create_command/save_command.h"
 
 
 CommandFactory::~CommandFactory() {
@@ -24,8 +24,7 @@ CommandFactory::~CommandFactory() {
 
 
 ICommand *CommandFactory::getCommand(Parser &command) {
-    //check to under conditions
-    //keep in list
+    // TODO: check to under conditions
 
     if(!strcmp(command._args[0].c_str(), "new")) {
         if(!isCommandExist(command._args[0])) {
@@ -58,7 +57,7 @@ ICommand *CommandFactory::getCommand(Parser &command) {
     }
 
     else
-        throw std::invalid_argument("There is no such command");
+        throw std::invalid_argument("There is no such command, try again!!");
 
     _commands[command._args[0]]->isOk(command);
     return _commands[command._args[0]];

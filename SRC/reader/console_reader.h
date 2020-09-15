@@ -6,7 +6,7 @@
 #define SRC_CONSOLE_READER_H
 
 
-#include "../read/reader.h"
+#include "reader.h"
 
 class ConsoleReader : public Reader {
 public:

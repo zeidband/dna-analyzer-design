@@ -7,7 +7,7 @@
 
 
 #include "../manager/parser.h"
-#include "../write/i_write.h"
+#include "../writer/i_write.h"
 
 class ICommand {
 public:

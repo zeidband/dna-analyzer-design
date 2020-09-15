@@ -6,7 +6,7 @@
 #include "dna_data.h"
 
 
-DNA::DNA(std::string &name, std::string dna, size_t id) : _name(name), _dna(dna) , _id(id) {}
+DNA::DNA(std::string &name, std::string dna, size_t id) : _name(name) , _id(id), _dna(dna) {}
 
 void DNA::print(IWrite *output) {
     std::stringstream out;

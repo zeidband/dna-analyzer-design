@@ -4,7 +4,7 @@
 
 #include "load_command.h"
 #include "../../dna/container_dna.h"
-#include "../../read/file_reader.h"
+#include "../../reader/file_reader.h"
 #include "new_command.h"
 #include <cstring>
 #include <sstream>

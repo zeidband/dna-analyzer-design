@@ -6,7 +6,7 @@
 #define SRC_DNA_DATA_H
 
 #include "dna_sequence.h"
-#include "../write/i_write.h"
+#include "../writer/i_write.h"
 
 
 class DNA {

@@ -64,7 +64,7 @@ void New::addName(Parser &args) {
     }
 
     else {
-        args._args[2].erase(0,1);
+        args._args[2].erase(0, 1);
     }
 }
 
