@@ -15,6 +15,8 @@ public:
 
     void print(IWrite* output);
 
+    void printAll(IWrite* output);
+
     std::string getDnaAsString();
 
     size_t getId() { return _id; }

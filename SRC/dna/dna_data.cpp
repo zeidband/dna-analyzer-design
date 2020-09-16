@@ -26,6 +26,16 @@ void DNA::print(IWrite *output) {
     output->write(out.str());
 }
 
+
+void DNA::printAll(IWrite *output) {
+    std::stringstream out;
+    out << "[" << _id << "] " << _name << ": " << _dna.getDna();
+
+    output->write(out.str());
+}
+
+
 std::string DNA::getDnaAsString() {
     return _dna.getDna();
 }
+

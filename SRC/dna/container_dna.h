@@ -20,7 +20,7 @@ class ContainerDna {
 public:
     static size_t addDna(std::string dna, std::string name);
 
-    static void printDnaById(IWrite* output, size_t id);
+    static void printDnaById(IWrite* output, size_t id, bool all = true);
 
     static bool isNameInContainer(std::string name);
 

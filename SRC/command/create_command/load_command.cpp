@@ -8,6 +8,10 @@
 #include "new_command.h"
 #include <cstring>
 #include <sstream>
+#include "../../exceptions/invalid_dna.h"
+#include "../../exceptions/too_many_parameters.h"
+#include "../../exceptions/few_parameters.h"
+#include "../../exceptions/wrong_syntax.h"
 
 
 Load::sequenceName Load::_sequenceFilesAndCount;
@@ -20,9 +24,8 @@ void Load::isOk(Parser &args) {
     addName(args);
 }
 
-bool Load::run(Parser *input, IWrite *outputPrint) {
-    New myNew;
-    myNew.run(input, outputPrint);
+bool Load::run(Parser &input, IWrite *outputPrint) {
+    ContainerDna::printDnaById(outputPrint, ContainerDna::addDna(input._args[1], input._args[2]), false);
     return false;
 }
 
@@ -30,11 +33,11 @@ void Load::isCorrectArgs(Parser &args) {
     size_t size = args._args.size();
 
     if(size < 2) {
-        throw std::invalid_argument("There are not enough arguments to load command");
+        throw FewParameters("There are not enough arguments to load command");
     }
 
     if(size > 3) {
-        throw std::invalid_argument("There are too much arguments to load command");
+        throw TooManyParameters("There are too much arguments to load command");
     }
 
     FileReader file;
@@ -42,23 +45,22 @@ void Load::isCorrectArgs(Parser &args) {
     args._args[1] = file.read(args._args[1]);
 
     if(!isDna(args._args[1])) {
-        throw std::invalid_argument("Invalid DNA");
+        throw InvalidDna();
     }
 
     if(size == 3) {
 
         if(args._args[2][0] != '@') {
-            throw std::invalid_argument("Should be given @ before the DNA name");
+            throw WrongSyntax("Should be given @ before the DNA name");
         }
 
         else {
             args._args[2].erase(0, 1);
 
+            // TODO: decide if to change the name if exist such name
             if(ContainerDna::isNameInContainer(args._args[2])) {
                 throw std::invalid_argument("exist dna with such name in the program");
             }
-
-            args._args[2].insert(0, 1, '@');
         }
     }
 }
@@ -73,10 +75,16 @@ void Load::addName(Parser &args) {
             _sequenceFilesAndCount[args._args[2]] = 1;
         }
 
+
         else {
             std::stringstream name;
-            name << args._args[2] << _sequenceFilesAndCount[args._args[2]];
-            _sequenceFilesAndCount[args._args[2]] += 1;
+
+            do {
+                name.str("");
+                name << args._args[2] << _sequenceFilesAndCount[args._args[2]];
+                ++_sequenceFilesAndCount[args._args[2]];
+            } while ( ContainerDna::isNameInContainer(name.str()) );
+
             args._args.pop_back();
             args._args.push_back(name.str());
         }
@@ -84,7 +92,6 @@ void Load::addName(Parser &args) {
     }
 
     else {
-        args._args[2].erase(0,1);
         args._args.pop_back();
     }
 }

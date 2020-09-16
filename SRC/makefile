@@ -1,7 +1,7 @@
 TARGET=main
 
 # all .cpp files in this directory are my sources
-SOURCES=$(wildcard *.cpp dna/*.cpp reader/*.cpp writer/*.cpp manager/*.cpp command/*.cpp command/create_command/*.cpp)
+SOURCES=$(wildcard *.cpp dna/*.cpp reader/*.cpp writer/*.cpp manager/*.cpp command/*.cpp command/create_command/*.cpp exceptions/*.cpp)
 OBJS=$(SOURCES:.cpp=.o)
 INC_DIR=../include
 CC=g++

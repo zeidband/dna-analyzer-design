@@ -7,6 +7,11 @@
 #include <cstring>
 #include <sstream>
 #include "../../dna/container_dna.h"
+#include "../../exceptions/invalid_dna.h"
+#include "../../exceptions/too_many_parameters.h"
+#include "../../exceptions/few_parameters.h"
+#include "../../exceptions/wrong_syntax.h"
+
 
 
 void New::isOk(Parser &args) {
@@ -17,8 +22,8 @@ void New::isOk(Parser &args) {
     addName(args);
 }
 
-bool New::run(Parser* input, IWrite* outputPrint) {
-    ContainerDna::printDnaById(outputPrint, ContainerDna::addDna(input->_args[1], input->_args[2]));
+bool New::run(Parser& input, IWrite* outputPrint) {
+    ContainerDna::printDnaById(outputPrint, ContainerDna::addDna(input._args[1], input._args[2]));
     return false;
 }
 
@@ -26,31 +31,30 @@ void New::isCorrectArgs(Parser &args) {
     size_t size = args._args.size();
 
     if(size < 2) {
-        throw std::invalid_argument("There are not enough arguments to new command");
+        throw FewParameters("There are not enough arguments to new command");
     }
 
     if(size > 3) {
-        throw std::invalid_argument("There are too much arguments to new command");
+        throw TooManyParameters("There are too much arguments to new command");
     }
 
     if(!isDna(args._args[1])) {
-        throw std::invalid_argument("Invalid DNA");
+        throw InvalidDna();
     }
 
     if(size == 3) {
 
         if(args._args[2][0] != '@') {
-            throw std::invalid_argument("Should be given @ before the DNA name");
+            throw WrongSyntax("Should be given @ before the DNA name");
         }
 
         else {
             args._args[2].erase(0, 1);
 
+            // TODO: decide if to change the name if exist such name
             if(ContainerDna::isNameInContainer(args._args[2])) {
                 throw std::invalid_argument("exist dna with such name in the program");
             }
-
-            args._args[2].insert(0, 1, '@');
         }
     }
 }
@@ -62,9 +66,4 @@ void New::addName(Parser &args) {
         name << "seq" << numOfSeq++;
         args._args.push_back(name.str());
     }
-
-    else {
-        args._args[2].erase(0, 1);
-    }
 }
-

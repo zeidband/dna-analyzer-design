@@ -5,17 +5,15 @@
 #include "file_reader.h"
 
 
-std::string& FileReader::read(std::string& inputFrom, bool readSomeLines/* = false*/) {
+std::string& FileReader::read(std::string& inputFrom, size_t readSomeLines/* = 0*/) {
     std::string line;
     std::ifstream myFile(inputFrom.c_str());
 
     if (myFile.is_open()) {
 
+        //read a line in the middle of the file
         if(readSomeLines) {
-            static size_t count = 0;
-            count++;
-
-            for(size_t i = 0 ; i < count ; ++i) {
+            for(size_t i = 0 ; i < readSomeLines ; ++i) {
 
                 if (getline(myFile, line)) {
                     _input = line;
@@ -23,6 +21,7 @@ std::string& FileReader::read(std::string& inputFrom, bool readSomeLines/* = fal
             }
         }
 
+        //read one line from the file
         else {
             getline(myFile, line);
             _input = line;

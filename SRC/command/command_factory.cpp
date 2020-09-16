@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <cstring>
+#include "../exceptions/wrong_command.h"
 #include "command_factory.h"
 #include "create_command/new_command.h"
 #include "create_command/dup_command.h"
@@ -25,6 +26,10 @@ CommandFactory::~CommandFactory() {
 
 ICommand *CommandFactory::getCommand(Parser &command) {
     // TODO: check to under conditions
+
+    if ( command._args.size() == 0 ) {
+        throw WrongCommand();
+    }
 
     if(!strcmp(command._args[0].c_str(), "new")) {
         if(!isCommandExist(command._args[0])) {
@@ -56,8 +61,9 @@ ICommand *CommandFactory::getCommand(Parser &command) {
         }
     }
 
-    else
-        throw std::invalid_argument("There is no such command, try again!!");
+    else {
+        throw WrongCommand();
+    }
 
     _commands[command._args[0]]->isOk(command);
     return _commands[command._args[0]];

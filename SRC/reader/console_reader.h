@@ -10,7 +10,7 @@
 
 class ConsoleReader : public Reader {
 public:
-    virtual std::string& read(std::string& inputFrom, bool readSomeLines = false);
+    virtual std::string& read(std::string& inputFrom, size_t readSomeLines /*= 0*/);
 };
 
 

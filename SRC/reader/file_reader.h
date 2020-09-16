@@ -10,7 +10,7 @@
 
 class FileReader : public Reader {
 public:
-    std::string& read(std::string& inputFrom, bool readSomeLines = false);
+    std::string& read(std::string& inputFrom, size_t readSomeLines = 0);
 };
 
 

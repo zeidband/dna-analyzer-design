@@ -15,15 +15,15 @@ public:
 
     virtual void isOk(Parser& args) = 0;
 
-    virtual bool run(Parser* input, IWrite* outputPrint) = 0;
+    virtual bool run(Parser& input, IWrite* outputPrint) = 0;
 
 protected:
 
     bool isDna(std::string &dna);
 
-    bool isId(std::string &id);
+    bool isExistId(std::string &id);
 
-    bool isName(std::string &name);
+    bool isExistName(std::string &name);
 };
 
 

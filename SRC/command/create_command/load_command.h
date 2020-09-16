@@ -12,7 +12,7 @@
 class Load : public ICommand {
 
 public:
-    bool run(Parser* input, IWrite* outputPrint);
+    bool run(Parser& input, IWrite* outputPrint);
 
     void isOk(Parser& args);
 

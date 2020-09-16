@@ -11,12 +11,14 @@ class Save : public ICommand {
 public:
     void isOk(Parser& args);
 
-    bool run(Parser* input, IWrite* outputPrint);
+    bool run(Parser& input, IWrite* outputPrint);
 
 protected:
     void isCorrectArgs(Parser& args);
 
     void addName(Parser& args);
+
+    bool invalidFile(std::string &name_file);
 };
 
 

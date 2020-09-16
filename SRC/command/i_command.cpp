@@ -12,7 +12,7 @@ bool ICommand::isDna(std::string &dna) {
     return strlen(dna.c_str()) == strspn(dna.c_str(), "ACTG");
 }
 
-bool ICommand::isId(std::string &id) {
+bool ICommand::isExistId(std::string &id) {
     bool flag = false;
 
     if(id[0] == '#') {
@@ -24,7 +24,7 @@ bool ICommand::isId(std::string &id) {
     return flag;
 }
 
-bool ICommand::isName(std::string &name) {
+bool ICommand::isExistName(std::string &name) {
     bool flag = false;
 
     if(name[0] == '@') {

@@ -16,9 +16,9 @@ void Manager::start() {
     ICommand *command;
     Parser current_command;
     CommandFactory factory;
-    bool flag = false;
+    bool finish = false;
 
-    while(!flag) {
+    while ( !finish ) {
         write->write("\n> cmd >> ");
 
         current_command = read->read();
@@ -32,7 +32,7 @@ void Manager::start() {
             continue;
         }
 
-        flag = (command->run(&current_command, write));
+        finish = (command->run(current_command, write));
     }
 
     ContainerDna::deleteAll();
