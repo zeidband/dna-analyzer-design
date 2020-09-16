@@ -2,10 +2,10 @@
 // Created by a on 7/7/20.
 //
 
-#include "load_command.h"
+#include "load.h"
 #include "../../dna/container_dna.h"
 #include "../../reader/file_reader.h"
-#include "new_command.h"
+#include "new.h"
 #include <cstring>
 #include <sstream>
 #include "../../exceptions/invalid_dna.h"

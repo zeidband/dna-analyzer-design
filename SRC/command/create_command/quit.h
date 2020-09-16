@@ -2,8 +2,8 @@
 // Created by a on 7/8/20.
 //
 
-#ifndef SRC_QUIT_COMMAND_H
-#define SRC_QUIT_COMMAND_H
+#ifndef SRC_QUIT_H
+#define SRC_QUIT_H
 
 #include "../i_command.h"
 
@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif //SRC_QUIT_COMMAND_H
+#endif //SRC_QUIT_H

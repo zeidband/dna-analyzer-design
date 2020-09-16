@@ -6,10 +6,10 @@
 #include <cstring>
 #include "../exceptions/wrong_command.h"
 #include "command_factory.h"
-#include "create_command/new_command.h"
-#include "create_command/dup_command.h"
-#include "create_command/quit_command.h"
-#include "create_command/save_command.h"
+#include "create_command/new.h"
+#include "create_command/dup.h"
+#include "create_command/quit.h"
+#include "create_command/save.h"
 
 
 CommandFactory::~CommandFactory() {

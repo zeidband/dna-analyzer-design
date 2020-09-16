@@ -1,13 +1,13 @@
 //
-// Created by a on 7/6/20.
+// Created by a on 7/8/20.
 //
 
-#ifndef SRC_NEW_COMMAND_H
-#define SRC_NEW_COMMAND_H
+#ifndef SRC_DUP_H
+#define SRC_DUP_H
 
-#include "../i_command.h"
+#include "load.h"
 
-class New : public ICommand {
+class Dup : public ICommand {
 public:
     void isOk(Parser& args);
 
@@ -17,7 +17,9 @@ protected:
     void isCorrectArgs(Parser& args);
 
     void addName(Parser& args);
+
+    static Load::sequenceName _sequenceFilesAndCount;
 };
 
 
-#endif //SRC_NEW_COMMAND_H
+#endif //SRC_DUP_H

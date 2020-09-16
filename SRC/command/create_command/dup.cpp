@@ -4,8 +4,8 @@
 
 #include <cstdlib>
 #include <sstream>
-#include "dup_command.h"
-#include "new_command.h"
+#include "dup.h"
+#include "new.h"
 #include "../../dna/container_dna.h"
 #include "../../exceptions/too_many_parameters.h"
 #include "../../exceptions/few_parameters.h"

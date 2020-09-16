@@ -2,8 +2,8 @@
 // Created by a on 7/7/20.
 //
 
-#ifndef SRC_LOAD_COMMAND_H
-#define SRC_LOAD_COMMAND_H
+#ifndef SRC_LOAD_H
+#define SRC_LOAD_H
 
 #include "../i_command.h"
 #include <map>
@@ -27,4 +27,4 @@ protected:
 };
 
 
-#endif //SRC_LOAD_COMMAND_H
+#endif //SRC_LOAD_H
