@@ -32,7 +32,7 @@ void Manager::start() {
             continue;
         }
 
-        finish = (command->run(current_command, write));
+        finish = (command->run(write));
     }
 
     ContainerDna::deleteAll();

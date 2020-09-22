@@ -7,10 +7,11 @@
 #include "../exceptions/wrong_command.h"
 #include "command_factory.h"
 #include "create_command/new.h"
-#include "create_command/dup.h"
+#include "create_command/load.h"
+//#include "create_command/dup.h"
 #include "create_command/quit.h"
-#include "create_command/save.h"
-#include "create_command/slice.h"
+//#include "create_command/save.h"
+//#include "create_command/slice.h"
 
 
 CommandFactory::~CommandFactory() {
@@ -44,23 +45,23 @@ ICommand *CommandFactory::getCommand(Parser &command) {
         }
     }
 
-    else if(!strcmp(command._args[0].c_str(), "dup")) {
-        if(!isCommandExist(command._args[0])) {
-            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Dup));
-        }
-    }
-
-    else if(!strcmp(command._args[0].c_str(), "slice")) {
-        if(!isCommandExist(command._args[0])) {
-            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Slice));
-        }
-    }
-
-    else if(!strcmp(command._args[0].c_str(), "save")) {
-        if(!isCommandExist(command._args[0])) {
-            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Save));
-        }
-    }
+//    else if(!strcmp(command._args[0].c_str(), "dup")) {
+//        if(!isCommandExist(command._args[0])) {
+//            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Dup));
+//        }
+//    }
+//
+//    else if(!strcmp(command._args[0].c_str(), "slice")) {
+//        if(!isCommandExist(command._args[0])) {
+//            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Slice));
+//        }
+//    }
+//
+//    else if(!strcmp(command._args[0].c_str(), "save")) {
+//        if(!isCommandExist(command._args[0])) {
+//            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Save));
+//        }
+//    }
 
     else if(!strcmp(command._args[0].c_str(), "quit")) {
         if(!isCommandExist(command._args[0])) {
@@ -72,7 +73,8 @@ ICommand *CommandFactory::getCommand(Parser &command) {
         throw WrongCommand();
     }
 
-    _commands[command._args[0]]->isOk(command);
+    _commands[command._args[0]]->setArgs(command);
+
     return _commands[command._args[0]];
 }
 

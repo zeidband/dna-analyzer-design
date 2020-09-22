@@ -13,14 +13,11 @@ class ICommand {
 public:
     virtual ~ICommand() {}
 
-    virtual void isOk(Parser& args) = 0;
+    virtual bool run(IWrite* outputPrint) = 0;
 
-    virtual bool run(Parser& input, IWrite* outputPrint) = 0;
+    virtual void setArgs(Parser& args) = 0;
 
 protected:
-
-    bool isDna(std::string &dna);
-
     bool isExistId(std::string &id);
 
     bool isExistName(std::string &name);

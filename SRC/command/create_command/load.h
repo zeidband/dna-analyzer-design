@@ -1,29 +1,22 @@
 //
-// Created by a on 7/7/20.
+// Created by Sara a on 7/7/20.
 //
 
 #ifndef SRC_LOAD_H
 #define SRC_LOAD_H
 
 #include "../i_command.h"
-#include <map>
+#include "../params/command_params/load.h"
 
 
 class Load : public ICommand {
-
 public:
-    bool run(Parser& input, IWrite* outputPrint);
+    bool run(IWrite* outputPrint);
 
-    void isOk(Parser& args);
+    void setArgs(Parser& other);
 
-    typedef std::map<std::string, size_t> sequenceName;
-
-protected:
-    void isCorrectArgs(Parser& args);
-
-    void addName(Parser& args);
-
-    static sequenceName _sequenceFilesAndCount;
+private:
+    LoadParams params;
 };
 
 

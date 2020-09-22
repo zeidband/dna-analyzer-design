@@ -8,10 +8,6 @@
 #include "../dna/container_dna.h"
 
 
-bool ICommand::isDna(std::string &dna) {
-    return strlen(dna.c_str()) == strspn(dna.c_str(), "ACTG");
-}
-
 bool ICommand::isExistId(std::string &id) {
     bool flag = false;
 

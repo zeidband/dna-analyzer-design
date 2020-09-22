@@ -1,22 +1,22 @@
 //
-// Created by a on 7/6/20.
+// Created by Sara a on 7/6/20.
 //
 
 #ifndef SRC_NEW_H
 #define SRC_NEW_H
 
 #include "../i_command.h"
+#include "../params/command_params/new.h"
+
 
 class New : public ICommand {
 public:
-    void isOk(Parser& args);
+    bool run(IWrite* outputPrint);
 
-    bool run(Parser& input, IWrite* outputPrint);
+    void setArgs(Parser& args);
 
-protected:
-    void isCorrectArgs(Parser& args);
-
-    void addName(Parser& args);
+private:
+    NewParams params;
 };
 
 
