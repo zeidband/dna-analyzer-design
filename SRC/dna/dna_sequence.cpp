@@ -117,6 +117,10 @@ DnaSequence DnaSequence::slice(size_t begin/* = 0 */, size_t end/* = 0 */) {
     if (end == 0 || end > m_len)
         end = m_len;
 
+    if (begin >= length()) {
+        begin = end + 1;
+    }
+
     DnaSequence newDna(end - begin + 1);
     newDna.m_dna = new Nucleotide[end - begin + 2];
     size_t i;

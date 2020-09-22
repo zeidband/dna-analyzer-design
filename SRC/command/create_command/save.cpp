@@ -39,11 +39,11 @@ void Save::isCorrectArgs(Parser &args) {
     size_t size = args._args.size();
 
     if ( size < 2 ) {
-        throw FewParameters("There are not enough arguments to load command");
+        throw FewParameters("There are not enough arguments to save command");
     }
 
     if ( size > 3 ) {
-        throw TooManyParameters("There are too much arguments to load command");
+        throw TooManyParameters("There are too much arguments to save command");
     }
 
     if ( !isExistId(args._args[1]) && !isExistName(args._args[1]) && !isDna(args._args[1]) ) {

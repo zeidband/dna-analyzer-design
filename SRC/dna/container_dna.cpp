@@ -27,6 +27,17 @@ void ContainerDna::printDnaById(IWrite *output, size_t id, bool all) {
     }
 }
 
+void ContainerDna::printDnaByName(IWrite *output, std::string name, bool all) {
+    if ( all ) {
+        _allDnaAsName[name]->printAll(output);
+    }
+
+    else {
+        _allDnaAsName[name]->print(output);
+    }
+}
+
+
 bool ContainerDna::isNameInContainer(std::string name) {
     return _allDnaAsName.find(name.c_str()) != _allDnaAsName.end();
 }
@@ -49,6 +60,10 @@ std::string ContainerDna::getNameById(size_t id) {
     return _allDnaAsId[id]->getName();
 }
 
+size_t ContainerDna::getIdByName(std::string& name) {
+    return _allDnaAsName[name]->getId();
+}
+
 void ContainerDna::deleteAll() {
     std::map<size_t, std::tr1::shared_ptr<DNA> >::iterator iter, curr;
 
@@ -58,5 +73,22 @@ void ContainerDna::deleteAll() {
         _allDnaAsId.erase(curr);
     }
 }
+
+size_t ContainerDna::sliceDna(std::string &name, size_t begin, size_t end, bool inPlace, std::string &dna) {
+    size_t id = 0;
+
+    if ( !inPlace ) {
+        id = addDna(dna, name);
+    }
+
+    else {
+        id = getIdByName(name);
+    }
+
+    _allDnaAsName[name].get()->slice(begin, end);
+
+    return id;
+}
+
 
 

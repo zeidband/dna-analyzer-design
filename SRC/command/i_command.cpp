@@ -17,6 +17,7 @@ bool ICommand::isExistId(std::string &id) {
 
     if(id[0] == '#') {
         id.erase(0, 1);
+        // TODO: check if id is a number
         flag = ContainerDna::isIDInContainer(std::atoi(id.c_str()));
         id.insert(0, 1, '#');
     }

@@ -23,6 +23,8 @@ public:
 
     std::string getName() { return _name; }
 
+    void slice(size_t i, size_t i1);
+
 private:
     std::string _name;
     size_t _id;

@@ -22,6 +22,8 @@ public:
 
     static void printDnaById(IWrite* output, size_t id, bool all = true);
 
+    static void printDnaByName(IWrite* output, std::string name, bool all = true);
+
     static bool isNameInContainer(std::string name);
 
     static bool isIDInContainer(size_t id);
@@ -29,6 +31,10 @@ public:
     static std::string getDnaByNameOrId(std::string);
 
     static std::string getNameById(size_t id);
+
+    static size_t getIdByName(std::string& name);
+
+    static size_t sliceDna(std::string &name, size_t begin, size_t end, bool inPlace = true, std::string &dna = (std::string &) "");
 
     static void deleteAll();
 
@@ -38,6 +44,7 @@ private:
     static NameDnaList _allDnaAsName;
 
     static size_t _idCounter;
+
 };
 
 

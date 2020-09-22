@@ -10,6 +10,7 @@
 #include "create_command/dup.h"
 #include "create_command/quit.h"
 #include "create_command/save.h"
+#include "create_command/slice.h"
 
 
 CommandFactory::~CommandFactory() {
@@ -46,6 +47,12 @@ ICommand *CommandFactory::getCommand(Parser &command) {
     else if(!strcmp(command._args[0].c_str(), "dup")) {
         if(!isCommandExist(command._args[0])) {
             _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Dup));
+        }
+    }
+
+    else if(!strcmp(command._args[0].c_str(), "slice")) {
+        if(!isCommandExist(command._args[0])) {
+            _commands.insert(std::pair<std::string, ICommand*>(command._args[0], new Slice));
         }
     }
 
